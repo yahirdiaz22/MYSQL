@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Revista ORDER BY idRevista");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Revista ORDER BY idRevista");
         }
         private void Revista_Load(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace proyectoSQL
             string pais = txtPais.Text;
             consulta = "INSERT INTO Revista (nombre,editorial,numeroPagina,pais) " +
                 "values('" + nombre + "', '" + editorial + "','" + numeroPagina + "', '" + pais + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
             txtNumero.Clear();
@@ -50,7 +50,7 @@ namespace proyectoSQL
             string numeroPagina = txtNumero.Text;
             string pais = txtPais.Text;
             consulta = consulta = "UPDATE idRevista SET nombre = '" + nombre + "', '" + editorial + "','" + numeroPagina + "', '" + pais + "' WHERE idRevista = " + idRevista.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNumero.Clear();
             txtEditorial.Clear();
@@ -62,7 +62,7 @@ namespace proyectoSQL
         {
             int idRevista = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Revista SET ESTATUS = 0 WHERE idRevista =" + idRevista.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Imprenta ORDER BY idImprenta");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Imprenta ORDER BY idImprenta");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace proyectoSQL
             string editorial = txtEditorial.Text;
             consulta = "INSERT INTO Editorial (nombre,numeroImprenta,descripcion,cantidadTotal,idEditorial) " +
                 "values('" + nombre + "', '" + numero + "','" + descripcion + "','" + cantidad + "','" + editorial + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
             txtCantidad.Clear();
@@ -47,7 +47,7 @@ namespace proyectoSQL
             string cantidad = txtCantidad.Text;
             string editorial = txtEditorial.Text;
             consulta = consulta = "UPDATE Imprenta SET nombre = '" + nombre + "', '" + numero + "','" + descripcion + "','" + cantidad + "','" + editorial + "' WHERE idImprenta = " + idImprenta.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtCantidad.Clear();
             txtDescripcion.Clear();
@@ -60,8 +60,8 @@ namespace proyectoSQL
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             int idImprenta = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            consulta = "UPDATE Imprenta SET ESTATUS = 0 WHERE idImprenta =" + idImprenta.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            consulta = "UPDATE Imprenta SET ESTATUS = false WHERE idImprenta =" + idImprenta.ToString();
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

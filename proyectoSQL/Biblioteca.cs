@@ -19,7 +19,7 @@ namespace proyectoSQL
 
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Biblioteca ORDER BY idBiblioteca");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Biblioteca ORDER BY idBiblioteca");
         }
         private void Biblioteca_Load(object sender, EventArgs e)
         {
@@ -44,7 +44,7 @@ namespace proyectoSQL
             string estado = txtEstado.Text;
             string pais = txtPais.Text;
             consulta = "INSERT INTO Biblioteca (nombre,calle,colonia,numeroExterior,telefono,cuidad,estado,pais) values ('" + nombre + "','" + calle + "','" + colonia + "','" + numeroExterior + "','" + telefono + "','" + cuidad + "','" + estado + "','" + pais + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtPais.Clear();
             txtEstado.Clear();
@@ -68,7 +68,7 @@ namespace proyectoSQL
             string pais = txtPais.Text;
             int idBiblioteca = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "  UPDATE Biblioteca SET nombre ='" + nombre + "','" + calle + "','" + colonia + "','" + numeroExterior + "','" + telefono + "','" + cuidad + "','" + estado + "','" + pais +  "'WHERE idAdquisicion = " + idBiblioteca.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtPais.Clear();
             txtEstado.Clear();
@@ -84,7 +84,7 @@ namespace proyectoSQL
         {
             int idBiblioteca = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Biblioteca SET ESTATUS = 0 WHERE idBiblioteca =" + idBiblioteca.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
     }

@@ -23,10 +23,10 @@ namespace proyectoSQL
             string nombre = txtNombre.Text;
             string descripcion = txtDescripcio.Text;
             string fecha = txtFecha.Text;
-            string idUsuario = txtFecha.Text;
-            string idEditorial = txtFecha.Text;
-            consulta = "INSERT INTO Articulo (nombreArticulo,descripcion,año,idUsuario,idEditorial) values ('" + nombre + "','" + descripcion + "','" + fecha + "','" + idUsuario + "','" + idEditorial + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            string idUsuario = txtidUsuario.Text;
+            string idEditorial = txtidEditorial.Text;
+            consulta = "INSERT INTO articulo (nombrearticulo,descripcion,fecha,idusuario,ideditorial) values ('" + nombre + "','" + descripcion + "','" + fecha + "','" + idUsuario + "','" + idEditorial + "')";
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtDescripcio.Clear();
@@ -36,7 +36,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Articulo ORDER BY idArticulo");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM articulo ORDER BY idArticulo");
         }
         private void Articulo_Load(object sender, EventArgs e)
         {
@@ -51,8 +51,8 @@ namespace proyectoSQL
             string idUsuario = txtFecha.Text;
             string idEditorial = txtFecha.Text;
             int idArticulo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            consulta = "  UPDATE AreaMuseo SET nombre ='" + nombre + "','" + descripcion + "','" + fecha + "','" + idUsuario + "','" + idEditorial + "WHERE idAreaMuseo = " + idArticulo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            consulta = "  UPDATE Articulo SET nombre ='" + nombre + "','" + descripcion + "','" + fecha + "','" + idUsuario + "','" + idEditorial + "WHERE idArticulo = " + idArticulo.ToString();
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtDescripcio.Clear();
@@ -63,9 +63,9 @@ namespace proyectoSQL
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            int idAreaMuseo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            consulta = "UPDATE AreaMuseo SET ESTATUS = 0 WHERE idAreaMuseo =" + idAreaMuseo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            int idArticulo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
+            consulta = "UPDATE Articulo SET ESTATUS = 0 WHERE idArticulo =" + idArticulo.ToString();
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

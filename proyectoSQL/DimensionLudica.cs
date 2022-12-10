@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM DimensionLudica ORDER BY idDimensionLudica");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM DimensionLudica ORDER BY idDimensionLudica");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -29,7 +29,7 @@ namespace proyectoSQL
             string idBiblioteca = txtidBiblio.Text;
             consulta = "INSERT INTO DimensionLudica (representacion,debates,proyeccionPeliculasDocumentos,seccionJuegoMeasa,idBiblioteca) " +
                 "values('" + representacion + "', '" + debate + "', '" + proyeccion + "', '" + seccion + "', '" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtRepresentacion.Clear();
             txtDebate.Clear();
@@ -47,7 +47,7 @@ namespace proyectoSQL
             string seccion = txtSeccion.Text;
             string idBiblioteca = txtidBiblio.Text;
             consulta = consulta = "UPDATE DimensionLudica SET representacion = '" + representacion + "', '" + debate + "', '" + proyeccion + "', '" + seccion + "', '" + idBiblioteca + "' WHERE idDimensionLudica = " + idDimensionLudica.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 
@@ -55,7 +55,7 @@ namespace proyectoSQL
         {
             int idDimensionLudica = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE DimensionLudica SET ESTATUS = 0 WHERE idDimensionLudica =" + idDimensionLudica.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

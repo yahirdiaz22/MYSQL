@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Editorial ORDER BY idEditorial");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Editorial ORDER BY idEditorial");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace proyectoSQL
             string libro = txtLibrp.Text;
             string revista = txtRevista.Text;
             consulta = "INSERT INTO Editorial (nombre,calle,colonia,numeroExterior,cuidad,estado,pais,telefono,idLibro,idRevista) values ('" + nombre + "','" + calle + "','" + colonia + "','" + numeroExterior + "','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + libro + "','" + revista + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtPais.Clear();
             txtEstado.Clear();
@@ -61,7 +61,7 @@ namespace proyectoSQL
             string revista = txtRevista.Text;
             consulta = "INSERT INTO Editorial (nombre,calle,colonia,numeroExterior,cuidad,estado,pais,telefono,idLibro,idRevista) " +
                "values('" + nombre + "','" + calle + "','" + colonia + "','" + numeroExterior + "','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + libro + "','" + revista + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtPais.Clear();
             txtEstado.Clear();
@@ -79,7 +79,7 @@ namespace proyectoSQL
         {
             int idEditorial = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Editorial SET ESTATUS = 0 WHERE idEditorial =" + idEditorial.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
     

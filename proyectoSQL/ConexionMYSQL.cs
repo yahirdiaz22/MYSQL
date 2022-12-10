@@ -1,20 +1,24 @@
-﻿using Npgsql;
+﻿using MySql;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace proyectoSQL
 {
-    internal class ConexionPostgre
+    internal class ConexionMYSQL
     {
-        public static NpgsqlConnection conexion = new NpgsqlConnection();
+        public static MySqlConnection conexion = new MySqlConnection();
 
         static string servidor = "localhost";
         static string bd = "Biblioteca";
-        static string ususario = "postgres";
-        static string password = "yahir";
-        static string puerto = "5432";
+        static string ususario = "root";
+        static string password = "Yayo1234";
+        static string puerto = "3306";
 
         static String cadenaConexion = "server=" + servidor + ";" + "port=" + puerto + ";" + "user id =" + ususario + ";" + "password=" + password + ";" + "database=" + bd + ";";
 
@@ -26,7 +30,7 @@ namespace proyectoSQL
                 conexion.Open();
                 //MessageBox.Show("Se conecto correctamente la base de datos");
             }
-            catch (NpgsqlException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show("No se puede conectar a la base de datos de PostgreSQL, error:" + e.ToString());
             }
@@ -38,7 +42,7 @@ namespace proyectoSQL
         public static DataTable ejecutaConsultaSelect(string consulta)
         {
             conectar();
-            NpgsqlDataAdapter adaptador = new NpgsqlDataAdapter(consulta, conexion);
+            MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexion);
             DataSet ds = new DataSet();
             adaptador.Fill(ds, "tabla");
             conexion.Close();
@@ -48,7 +52,7 @@ namespace proyectoSQL
         public static void ejecutaConsulta(string consulta)
         {
             conectar();
-            NpgsqlCommand comando = new NpgsqlCommand(consulta, conexion);
+            MySqlCommand comando = new MySqlCommand(consulta, conexion);
             comando.ExecuteNonQuery();
             conexion.Close();
         }

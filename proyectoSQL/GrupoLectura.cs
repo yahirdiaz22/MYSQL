@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM GrupoLectura ORDER BY idGrupoLectura");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM GrupoLectura ORDER BY idGrupoLectura");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -27,7 +27,7 @@ namespace proyectoSQL
             string idUSuario = txtIDUsuario.Text;
             consulta = "INSERT INTO GrupoLectura (descripcion,idUsuario,idBiblioteca) " +
                 "values('" + descripcion + "', '" + idUSuario + "','" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
             txtDesrcipcion.Clear();
@@ -43,7 +43,7 @@ namespace proyectoSQL
             string idBiblioteca = txtIDBiblioteca.Text;
             string idUSuario = txtIDUsuario.Text;
             consulta = consulta = "UPDATE GrupoLectura SET descripcion = '" + descripcion + idBiblioteca + "' WHERE idGrupoLectura = " + idGrupoLectura.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtDesrcipcion.Clear();
             txtIDBiblioteca.Clear();
@@ -54,7 +54,7 @@ namespace proyectoSQL
         {
             int idGrupoLectura = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE GrupoLectura SET ESTATUS = 0 WHERE idGrupoLectura =" + idGrupoLectura.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

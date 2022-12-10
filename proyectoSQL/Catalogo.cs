@@ -19,7 +19,7 @@ namespace proyectoSQL
         SqlCommand comando;
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Catalogo ORDER BY idCatalogo");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Catalogo ORDER BY idCatalogo");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace proyectoSQL
 
             consulta = "INSERT INTO Catalogo (autor, materias, titulo, referenciaBibliografica,idBiblioteca) " +
                 "values('" + nombre + "', '" + materias + "', '" + titulo + "', '" + referencia + "', '" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtTitulo.Clear();
             txtAutor.Clear();
@@ -49,7 +49,7 @@ namespace proyectoSQL
             string referencia = txtReferencia.Text;
             string idBiblioteca = txtidBiblio.Text;
             consulta = consulta = "UPDATE Catalogo SET nombre = '" + nombre + "', '" + materias + "', '" + titulo + "', '" + referencia + "', '" + idBiblioteca + "' WHERE idCatalogo = " + idCatalogo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtTitulo.Clear();
             txtAutor.Clear();
@@ -62,7 +62,7 @@ namespace proyectoSQL
         {
             int idCatalogo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Catalogo SET ESTATUS = 0 WHERE idCatalogo =" + idCatalogo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

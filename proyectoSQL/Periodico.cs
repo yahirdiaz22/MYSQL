@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Periodico ORDER BY idPeriodico");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Periodico ORDER BY idPeriodico");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace proyectoSQL
             string idImprenta = txtIDImprenta.Text;
             consulta = "INSERT INTO Periodico (nombre,nombreImprenta,fecha,descripcion,titulo,idImprenta) " +
                 "values('" + nombre + "', '" + imprenta + "','" + fecha + "','" + descripcion +"','" + titulo + "','" + idImprenta + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtFecha.Clear();
             txtNombre.Clear();
@@ -50,7 +50,7 @@ namespace proyectoSQL
             string titulo = txtTitulo.Text;
             string idImprenta = txtIDImprenta.Text;
             consulta = consulta = "UPDATE Periodico SET nombre = '" + nombre + "', '" + imprenta + "','" + fecha + "','" + descripcion + "','" + titulo + "','" + idImprenta + "' WHERE idPeriodico = " + idPeriodico.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtFecha.Clear();
             txtNombre.Clear();
@@ -64,7 +64,7 @@ namespace proyectoSQL
         {
             int idPeriodico = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Periodico SET ESTATUS = 0 WHERE idPeriodico =" + idPeriodico.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

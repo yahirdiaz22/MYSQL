@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Galeria ORDER BY idGaleria");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Galeria ORDER BY idGaleria");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -29,7 +29,7 @@ namespace proyectoSQL
             string idBiblioteca = txtIDBiblioteca.Text;
             consulta = "INSERT INTO Galeria (nombre,nombreArtista,fechaInicio,fechaFinal,idBiblioteca) " +
                 "values('" + nombre + "', '" + artista + "','" + fechainiico + "', '" + fechafinal + "','" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtArtista.Clear();
@@ -47,7 +47,7 @@ namespace proyectoSQL
             string fechafinal = txtFechaFinal.Text;
             string idBiblioteca = txtIDBiblioteca.Text; ;
             consulta = consulta = "UPDATE Galeria SET nombre = '" + nombre + "', '" + artista + "','" + fechainiico + "', '" + fechafinal + "','" + idBiblioteca + "' WHERE idGaleria = " + idGaleria.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtArtista.Clear();
@@ -60,7 +60,7 @@ namespace proyectoSQL
         {
             int idGaleria = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Galeria SET ESTATUS = 0 WHERE idGaleria =" + idGaleria.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

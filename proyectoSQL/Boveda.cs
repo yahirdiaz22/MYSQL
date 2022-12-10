@@ -21,7 +21,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Boveda ORDER BY idBoveda");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Boveda ORDER BY idBoveda");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace proyectoSQL
             string idBiblioteca = txtidBiblio.Text;
             consulta = "INSERT INTO Adorno (nombre, tematica, calidad) " +
                 "values('" + nombre + "', '" + mobiliario + "', '" + material + "', '" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtMobiliario.Clear();
@@ -47,7 +47,7 @@ namespace proyectoSQL
             string material = txtMaterial.Text;
             string idBiblioteca = txtidBiblio.Text;
             consulta = consulta = "UPDATE Boveda SET nombre = '" + nombre + "', '" + mobiliario + "', '" + material + "', '" + idBiblioteca + "' WHERE idBoveda = " + idBoveda.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtMobiliario.Clear();
@@ -59,7 +59,7 @@ namespace proyectoSQL
         {
             int idBoveda = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Boveda SET ESTATUS = 0 WHERE idBoveda =" + idBoveda.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

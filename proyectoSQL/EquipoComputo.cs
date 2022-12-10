@@ -54,7 +54,7 @@ namespace proyectoSQL
             string fechafinal = txtFechaFiinal.Text;
             string idBiblioteca = txtIDBil.Text;
             consulta = consulta = "UPDATE Clasificacion SET marca = '" + marca + "', '" + numero + "','" + fechainicio + "', '" + fechafinal + "','" + idBiblioteca + "' WHERE idEquipoComputo = " + idEquipoComputo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtMarca.Clear();
             txtNumero.Clear();
@@ -67,7 +67,7 @@ namespace proyectoSQL
         {
             int idEquipoComputo = (int)dgvActividadPrograma.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE EquipoComputo SET ESTATUS = 0 WHERE idEquipoComputo =" + idEquipoComputo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

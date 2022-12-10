@@ -19,7 +19,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvAdquisicion.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Adquisicion ORDER BY idAdquisicion");
+            dgvAdquisicion.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Adquisicion ORDER BY idAdquisicion");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace proyectoSQL
             string intercambio = txtIntercambio.Text;
             string donacion = txtDonacion.Text;
             consulta = "INSERT INTO Adquisicion (compra,suscripcion,intercambio,donacion) values ('" + compra + "','" + suscripcion + "','" + intercambio + "','" + donacion + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtCompar.Clear();
             txtSuscripcion.Clear();
@@ -45,7 +45,7 @@ namespace proyectoSQL
             int idAdquisicion = (int)dgvAdquisicion.SelectedRows[0].Cells[0].Value;
             consulta = "  UPDATE Adquisicion SET nombreActividad ='" + compra + "','" + suscripcion + "','" + donacion  + "'WHERE idAdquisicion = " + idAdquisicion.ToString();
             conexion.Open();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtCompar.Clear();
             txtSuscripcion.Clear();
@@ -62,7 +62,7 @@ namespace proyectoSQL
         {
             int idAdquisicion = (int)dgvAdquisicion.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Adquisicion SET ESTATUS = 0 WHERE idAdquisicion =" + idAdquisicion.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

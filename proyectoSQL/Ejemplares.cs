@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Ejemplares ORDER BY idEjemplares");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Ejemplares ORDER BY idEjemplares");
         }
         private void Ejemplares_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace proyectoSQL
             string numero = txtDescripcion.Text;
             consulta = "INSERT INTO Ejemplares (totalEjemplares,descripcion) " +
                 "values('" + desrcipcion + "', '" + numero + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
             txtDescripcion.Clear();
@@ -45,7 +45,7 @@ namespace proyectoSQL
             string descripcion = txtDescripcion.Text;
 
             consulta = consulta = "UPDATE Ejemplares SET totalEjemplares = '" + Total + "', '" + descripcion + "' WHERE idEjemplares = " + idEjemplares.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtDescripcion.Clear();
             txtEjemplare.Clear();
@@ -54,11 +54,8 @@ namespace proyectoSQL
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             int idEjemplares = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            string descripcion = txtDescripcion.Text;
-            string numero = txtEjemplare.Text;
-
-            consulta = consulta = "UPDATE Ejemplares SET descripcion = '" + descripcion + "', '" + numero + "' WHERE idEjemplares = " + idEjemplares.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            consulta = "UPDATE Ejemplares SET ESTATUS = 0 WHERE idEditorialRevista =" + idEjemplares.ToString();
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtEjemplare.Clear();
             txtDescripcion.Clear();

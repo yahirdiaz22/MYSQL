@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM ProveedorRevista ORDER BY idProveedorRevista");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM ProveedorRevista ORDER BY idProveedorRevista");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -25,7 +25,7 @@ namespace proyectoSQL
             string revista = txtRevista.Text;
             consulta = "INSERT INTO ProveedorRevista (idProveedor,idRevista) " +
                 "values('" + idProveedor + "', '" + revista + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 
@@ -35,7 +35,7 @@ namespace proyectoSQL
             string idProveedor = txtIDProveedor.Text;
             string revista = txtRevista.Text;
             consulta = consulta = "UPDATE ProveedorRevista SET idProveedor = '" + idProveedor + txtRevista + "' WHERE idProveedorRevista = " + idProveedorRevista.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDProveedor.Clear();
             txtRevista.Clear();
@@ -45,7 +45,7 @@ namespace proyectoSQL
         {
             int idProveedorRevista = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE ProveedorRevista SET ESTATUS = 0 WHERE idProveedorRevista =" + idProveedorRevista.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

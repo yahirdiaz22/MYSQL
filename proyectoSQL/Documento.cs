@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividadPrograma.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Documento ORDER BY idDocumento");
+            dgvActividadPrograma.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Documento ORDER BY idDocumento");
         }
 
         private void Documento_Load(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace proyectoSQL
             string idBiblioteca = txtIDBil.Text;
             consulta = "INSERT INTO Documento (videos,cds,dvd,mapas,planos,idBiblioteca) " +
                 "values('" + video + "', '" + cds + "', '" + dvd + "', '" + mapas + "','" + planos + "','" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
 
@@ -58,7 +58,7 @@ namespace proyectoSQL
 
             string idBiblioteca = txtIDBil.Text;
             consulta = consulta = "UPDATE idDocumento SET video = '" + video + "', '" + cds + "', '" + dvd + "', '" + mapas + "','" + planos + "','" + idBiblioteca + "' WHERE idDocumento = " + idDocumento.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtVideo.Clear();
             txtCds.Clear();
@@ -73,7 +73,7 @@ namespace proyectoSQL
         {
             int idDocumento = (int)dgvActividadPrograma.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Documento SET ESTATUS = 0 WHERE idDocumento =" + idDocumento.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

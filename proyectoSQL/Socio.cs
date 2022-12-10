@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividadPrograma.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Socio ORDER BY idSocio");
+            dgvActividadPrograma.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Socio ORDER BY idSocio");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace proyectoSQL
             string idPrestamo = txtIDPrestamo.Text;
             consulta = "INSERT INTO Socio (nombre,apellidoPaterno,apellidoMaterno,calle,colonia,numeroExterior,cuidad,estado,pais,telefono,idPrestamo) " +
                 "values('" + nombre + "', '" + aPaterno + "','" + aMaterno + "','" + calle + "','" + colonia + "','" + numero + "','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + idPrestamo + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtApaterno.Clear();
@@ -64,7 +64,7 @@ namespace proyectoSQL
             string pais = txtPais.Text;
             string telefono = txtTelefono.Text;
             string idPrestamo = txtIDPrestamo.Text; consulta = consulta = "UPDATE Socio SET nombre = '" + nombre + "', '" + aPaterno + "','" + aMaterno + "','" + calle + "','" + colonia + "','" + numero + "','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + idPrestamo + "' WHERE idPrestamo = " + idPrestamo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
         txtApaterno.Clear();
@@ -83,7 +83,7 @@ namespace proyectoSQL
         {
             int idSocio = (int)dgvActividadPrograma.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Socio SET ESTATUS = 0 WHERE idSocio =" + idSocio.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtApaterno.Clear();

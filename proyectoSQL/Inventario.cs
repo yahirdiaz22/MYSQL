@@ -19,7 +19,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Inventario ORDER BY idInventario");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Inventario ORDER BY idInventario");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -29,7 +29,7 @@ namespace proyectoSQL
 
             consulta = "INSERT INTO Inventario (descripcion,fecha,idEmpleado) " +
                 "values('" + descripcion + "', '" + fecha + "','" + empleado + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
             txtIDEmpleado.Clear();
@@ -45,7 +45,7 @@ namespace proyectoSQL
             string fecha = txtFecha.Text;
             string empleado = txtIDEmpleado.Text;
             consulta = consulta = "UPDATE Inventario SET descripcion = '" + descripcion + "', '" + fecha + "','" + empleado + "' WHERE idInventario = " + idInventario.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDEmpleado.Clear();
             txtDescripcion.Clear();
@@ -56,7 +56,7 @@ namespace proyectoSQL
         {
             int idInventario = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Inventario SET ESTATUS = 0 WHERE idInventario =" + idInventario.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

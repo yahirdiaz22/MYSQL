@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM RegistroVisita ORDER BY idRegistroVisita");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM RegistroVisita ORDER BY idRegistroVisita");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace proyectoSQL
             string idUsuario = txtIDUsuario.Text;
             consulta = "INSERT INTO RegistroVisita (fechaLlegada,fechaIda,nombre,apellidoPaterno,apellidoMaterno,idUsuario) " +
                 "values('" + fechallegada + "', '" + fechaida + "','" + nombre + "', '" + aPaterno + "','" + aMaterno + "', '" + idUsuario + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtApaterno.Clear();
             txtNombre.Clear();
@@ -50,7 +50,7 @@ namespace proyectoSQL
             string aMaterno = txtAMaterno.Text;
             string idUsuario = txtIDUsuario.Text;
             consulta = consulta = "UPDATE RegistroVisita SET fechaLlegada = '" + fechallegada + "', '" + fechaida + "','" + nombre + "', '" + aPaterno + "','" + aMaterno + "', '" + idUsuario + "' WHERE idRegistroVisita = " + idRegistroVisita.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtApaterno.Clear();
             txtNombre.Clear();
@@ -64,7 +64,7 @@ namespace proyectoSQL
         {
             int idRegistroVisita = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE RegistroVisita SET ESTATUS = 0 WHERE idRegistroVisita =" + idRegistroVisita.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

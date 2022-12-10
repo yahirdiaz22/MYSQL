@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividadPrograma.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Empleado ORDER BY idEmpleado");
+            dgvActividadPrograma.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Empleado ORDER BY idEmpleado");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace proyectoSQL
             string telefono = txtTelefono.Text;
             string biblioteca = txtIDBIblitoeca.Text;
             consulta = "INSERT INTO Empleado (nombre,apellidoPaterno,apellidoMaterno,rfc,calle,numeroExterior,cuidad,estado,pais,teledono,idBiblioteca) values ('" + nombre + "','" + aPaterno + "','" + aMaterno + "','" + rfc+  "','" + calle + "','" + numero + "'+'" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "', '" +biblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
             txtNombre.Clear();
@@ -65,7 +65,7 @@ namespace proyectoSQL
             string telefono = txtTelefono.Text;
             string biblioteca = txtIDBIblitoeca.Text;
             consulta = consulta = "UPDATE Empleado SET nombre = '" + nombre + "','" + aPaterno + "','" + aMaterno + "','" + rfc + "','" + calle + "','" + numero + "'+'" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "', '" + biblioteca + "' WHERE idEmpeldao = " + idEmpeldao.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtAmaterno.Clear();
@@ -85,7 +85,7 @@ namespace proyectoSQL
         {
             int idEmpeldao = (int)dgvActividadPrograma.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Empeldao SET ESTATUS = 0 WHERE idEmpeldao =" + idEmpeldao.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

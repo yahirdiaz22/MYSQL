@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM AreaMuseo ORDER BY idAreaMuseo");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM AreaMuseo ORDER BY idAreaMuseo");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -26,7 +26,7 @@ namespace proyectoSQL
             string descripcion = txtDescripcio.Text;
             string idBiblioteca = txtIdBiblioteca.Text;
             consulta = "INSERT INTO AreaMuseo (nombre,descripcion,idBiblioteca) values ('" + nombre + "','" + descripcion + "','" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtDescripcio.Clear();
@@ -40,7 +40,7 @@ namespace proyectoSQL
             string idBiblioteca = txtIdBiblioteca.Text;
             int idAreaMuseo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "  UPDATE AreaMuseo SET nombre ='" + nombre + "','" + descripcion        + "','" + idBiblioteca + "'WHERE idAreaMuseo = " + idAreaMuseo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtIdBiblioteca.Clear();
@@ -55,7 +55,7 @@ namespace proyectoSQL
         {
             int idAreaMuseo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE AreaMuseo SET ESTATUS = 0 WHERE idAreaMuseo =" + idAreaMuseo.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

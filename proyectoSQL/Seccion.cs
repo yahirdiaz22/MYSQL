@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Seccion ORDER BY idSeccion");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Seccion ORDER BY idSeccion");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace proyectoSQL
             string idBiblioteca = txtIDBiblioteca.Text;
             consulta = "INSERT INTO Secciones (lecturaConsulta,videoteka,fonoteca,hemeroteca,coleccionLocal,autoServicioFotoCopias,idBiblioteca) " +
                 "values('" + lectura + "', '" + video + "','" + foto +"', '" + hemeroteca + "','" + coleccion + "', '" + autoservicio + "','" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtColeccion.Clear();
             txtLectura.Clear();
@@ -51,7 +51,7 @@ namespace proyectoSQL
             string autoservicio = txtCopias.Text;
             string idBiblioteca = txtIDBiblioteca.Text;
             consulta = consulta = "UPDATE Secciones SET lecturaConsulta = '" + lectura + "', '" + video + "','" + foto + "', '" + hemeroteca + "','" + coleccion + "', '" + autoservicio + "','" + idBiblioteca + "' WHERE idSecciones = " + idSeccion.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtColeccion.Clear();
             txtLectura.Clear();
@@ -65,7 +65,7 @@ namespace proyectoSQL
         {
             int idSeccion = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Secciones SET ESTATUS = 0 WHERE idSecciones =" + idSeccion.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

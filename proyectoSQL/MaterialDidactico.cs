@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM MaterialDidactico ORDER BY idMaterialDidactico");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM MaterialDidactico ORDER BY idMaterialDidactico");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace proyectoSQL
 
             consulta = "INSERT INTO MateiralDidactico (globoTerraqueo,descripcion,juegosDidacticos,mapas,laminas,idBiblioteca) " +
                 "values('" + globo + "', '" + descripcion + "','" + juegos + "','" + mapas + "','" + laminas + "','" + biblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
             txtJuego.Clear();
@@ -52,7 +52,7 @@ namespace proyectoSQL
             string laminas = txtLamina.Text;
             string biblioteca = txtIDBiblioteca.Text;
             consulta = consulta = "UPDATE MaterialDidactico SET globo = '" + globo + "', '" + descripcion + "','" + juegos + "','" + mapas + "','" + laminas + "','" + biblioteca + "' WHERE idMaterialDidactico = " + idMaterialDidactico.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtJuego.Clear();
             txtDescripcion.Clear();
@@ -66,7 +66,7 @@ namespace proyectoSQL
         {
             int idMaterialDidactico = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE MaterialDidactico SET ESTATUS = 0 WHERE idMaterialDidactico =" + idMaterialDidactico.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Libro ORDER BY idLibro");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Libro ORDER BY idLibro");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -36,7 +36,7 @@ namespace proyectoSQL
             string adqusicion = txtIDAdquisicion.Text;
             consulta = "INSERT INTO Libro (nombreLibro,pais,cantidadPaginas,idTema,idPasta,idPrestamo,idAutor,idMaterial,idUsuario,idEstanteria,idBiblioteca,idAdquisicion) " +
                 "values('" + nombre + "', '" + pais + "','" + cantidad + "', '" + tema + "','" + pasta + "', '" + presatmo + "','" + autor + "', '" + material + "','" + usuario + "', '" + estanteria + "','" + idBiblioteca + "', '" + adqusicion + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtPais.Clear();
@@ -71,7 +71,7 @@ namespace proyectoSQL
             string adqusicion = txtIDAdquisicion.Text;
 
             consulta = consulta = "UPDATE Libro SET nombreLibro = '" + nombre + "', '" + pais + "','" + cantidad + "', '" + tema + "','" + pasta + "', '" + presatmo + "','" + autor + "', '" + material + "','" + usuario + "', '" + estanteria + "','" + idBiblioteca + "', '" + adqusicion + "' WHERE idLibro = " + idLibro.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtPais.Clear();
@@ -91,7 +91,7 @@ namespace proyectoSQL
         {
             int idLibro = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Libro SET ESTATUS = 0 WHERE idLibro =" + idLibro.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

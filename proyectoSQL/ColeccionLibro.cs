@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM ColeccionLibro ORDER BY idColeccionLibro");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM ColeccionLibro ORDER BY idColeccionLibro");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -26,7 +26,7 @@ namespace proyectoSQL
             string idColeccion = txtIDColeccion.Text;
             consulta = "INSERT INTO ColeccionLibro (idColeccion,idLibro) " +
                 "values('" + idColeccion + "', '" + idLibro +"')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDColeccion.Clear();
             txtIDLibro.Clear();
@@ -38,7 +38,7 @@ namespace proyectoSQL
             string idColeccion = txtIDColeccion.Text;
             string idLibro = txtIDLibro.Text;
             consulta = consulta = "UPDATE ColeccionLibro SET idColeccion = '" + idColeccion + "', '" + idLibro + "' WHERE idBoveda = " + idColeccionLibro.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDColeccion.Clear();
             txtIDLibro.Clear();
@@ -48,7 +48,7 @@ namespace proyectoSQL
         {
             int idColeccionLibro = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE ColeccionLibro SET ESTATUS = 0 WHERE idColeccionLibro =" + idColeccionLibro.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

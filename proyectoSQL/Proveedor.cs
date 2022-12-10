@@ -17,7 +17,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividadPrograma.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Proveedor ORDER BY idProveedor");
+            dgvActividadPrograma.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Proveedor ORDER BY idProveedor");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -35,7 +35,7 @@ namespace proyectoSQL
             string idPedido = txtIDPedido.Text;
             consulta = "INSERT INTO Proveedor (nombre,apellidoPaterno,apellidoMaterno,rfc,calle,colonia,numeroExterior,cuidad,estado,pais,telefono,idPedido) " +
                 "values('" + nombre + "', '" + aPaterno + "','" + aMaterno + "','" + rfc + "','" + calle + "','" + colonia + "','" + numero +"','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + idPedido + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtApaterno.Clear();
@@ -75,7 +75,7 @@ namespace proyectoSQL
             string telefono = txtTelefono.Text;
             string idPedido = txtIDPedido.Text;
             consulta = consulta = "UPDATE Proveedor SET nombre = '" + nombre + "', '" + aPaterno + "','" + aMaterno + "','" + rfc + "','" + calle + "','" + colonia + "','" + numero + "','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + idPedido + "' WHERE idProveedor = " + idProveedor.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtApaterno.Clear();
@@ -95,7 +95,7 @@ namespace proyectoSQL
         {
             int idProveedor = (int)dgvActividadPrograma.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Proveedor SET ESTATUS = 0 WHERE idProveedor =" + idProveedor.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtApaterno.Clear();

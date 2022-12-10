@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Material ORDER BY idMaterial");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Material ORDER BY idMaterial");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -26,7 +26,7 @@ namespace proyectoSQL
             string Cantidad = txtCantidad.Text;
             consulta = "INSERT INTO Material (tipoMaterial,cantidadMaterial) " +
                 "values('" + txtCantidad + "', '" + Cantidad + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
 
@@ -40,7 +40,7 @@ namespace proyectoSQL
             string tipoMaterial = txtMaterial.Text;
             string Cantidad = txtCantidad.Text;
             consulta = consulta = "UPDATE Material SET material = '" + txtCantidad + Cantidad + "' WHERE idMaterial = " + idMaterial.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtMaterial.Clear();
             txtCantidad.Clear();
@@ -50,7 +50,7 @@ namespace proyectoSQL
         {
             int idMaterial = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Material SET ESTATUS = 0 WHERE idMaterial =" + idMaterial.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

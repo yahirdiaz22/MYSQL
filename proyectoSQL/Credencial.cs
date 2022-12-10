@@ -110,7 +110,7 @@ namespace proyectoSQL
         {
             int idCredencial = (int)dgvActividadPrograma.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Credencial SET ESTATUS = 0 WHERE idCredencial =" + idCredencial.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
 
         }

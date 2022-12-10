@@ -21,7 +21,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Autor ORDER BY idAutor");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Autor ORDER BY idAutor");
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -36,7 +36,7 @@ namespace proyectoSQL
             string pais = txtPais.Text;
             string telefono = txtTelefono.Text;
             consulta = "INSERT INTO Autor (nombre,apellidoPaterno,apellidoMaterno,calle,colonia,numeroExterior,cuidad,estado,pais,telefono) values ('" + nombre + "','" + aPaterno + "','" + aMaterno + "'+'" + calle + "','" + colonia + "','" + numero + "'+'" + cuidad + "','" + estado + "','" + pais +"','"+telefono+"')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtAmaterno.Clear();
@@ -70,7 +70,7 @@ namespace proyectoSQL
             string telefono = txtTelefono.Text;
             int idAutor = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "  UPDATE Autor SET nombre ='" + nombre + "','" + aPaterno + "','" + aMaterno + "'+'" + calle + "','" + colonia + "','" + numero + "'+'" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "'WHERE idAreaMuseo = " + idAutor.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
             txtAmaterno.Clear();
@@ -88,7 +88,7 @@ namespace proyectoSQL
         {
             int idAutor = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Autor SET ESTATUS = 0 WHERE idAutor =" + idAutor.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

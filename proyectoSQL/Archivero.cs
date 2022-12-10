@@ -27,7 +27,7 @@ namespace proyectoSQL
             string avisos = txtAvisos.Text;
             string idBiblioteca = txtidbiblio.Text;
             consulta = "INSERT INTO Archivero (folletos,recortes,ilustracions,volantes,avisos,idBiblioteca) values ('" + folletos + "','" + recortes + "','" + ilustraciones + "','" + volantes + "','" + avisos + "','" + idBiblioteca + "')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtFolletos.Clear();
             txtRecortes.Clear();
@@ -38,7 +38,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM Archivero ORDER BY idArchivero");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM Archivero ORDER BY idArchivero");
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -50,7 +50,7 @@ namespace proyectoSQL
             string idBiblioteca = txtidbiblio.Text;
             int idArchivero = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "  UPDATE Archivero SET folletos ='" + folletos + "','" + recortes + "','" + ilustraciones + "','" + volantes + "','" + avisos + "','" + idBiblioteca + "' WHERE idArchivero = " + idArchivero.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtFolletos.Clear();
             txtRecortes.Clear();
@@ -64,7 +64,7 @@ namespace proyectoSQL
         {
             int idActividad = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE Actividad SET ESTATUS = 0 WHERE idActividad =" + idActividad.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 

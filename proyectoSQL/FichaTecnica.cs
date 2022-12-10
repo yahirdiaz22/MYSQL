@@ -18,7 +18,7 @@ namespace proyectoSQL
         }
         private void MostrarDatos()
         {
-            dgvActividad.DataSource = ConexionPostgre.ejecutaConsultaSelect("SELECT *FROM FichaTecnica ORDER BY idFichaTecnica");
+            dgvActividad.DataSource = ConexionMYSQL.ejecutaConsultaSelect("SELECT *FROM FichaTecnica ORDER BY idFichaTecnica");
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace proyectoSQL
             string libro = txtIDLibro.Text;
             consulta = "INSERT INTO FichaTecnica (año,sinopsis,idiomaOriginal,titulo,ilustradorOriginal,idLibro) " +
                 "values('" + año + "', '" + sinopsis + "','" + idioma + "', '" + titulo + "','" + idioma + "', '" + libro +"')";
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtTitulo.Clear();
             txtFecha.Clear();
@@ -51,7 +51,7 @@ namespace proyectoSQL
             string ilustrador = txtIlustrador.Text;
             string libro = txtIDLibro.Text;
             consulta = consulta = "UPDATE FichaTecnica SET año = '" + año + "', '" + sinopsis + "','" + idioma + "', '" + titulo + "','" + idioma + "', '" + libro + "' WHERE idFichaTecnica = " + idFichaTecnica.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtTitulo.Clear();
             txtFecha.Clear();
@@ -66,7 +66,7 @@ namespace proyectoSQL
         {
             int idFichaTecnica = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             consulta = "UPDATE iichaTecnica SET ESTATUS = 0 WHERE idFichaTecnica =" + idFichaTecnica.ToString();
-            ConexionPostgre.ejecutaConsulta(consulta);
+            ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }
 
