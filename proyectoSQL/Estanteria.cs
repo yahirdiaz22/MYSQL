@@ -44,7 +44,7 @@ namespace proyectoSQL
             string numero = txtNumero.Text;
             string descripcion = txtDescripcion.Text;
             string idClasificacion = txtIDClasificacion.Text;
-            consulta = consulta = "UPDATE Estanteria SET numeroEstanteria = " + numero + "', '" + descripcion + "','" + idClasificacion + "' WHERE idEstanteria = " + idEstanteria.ToString();
+            consulta = "  UPDATE Estanteria SET numeroEstanteria ='" + numero + "',descripcion = '" + descripcion + "',idClasificacion = '" + idClasificacion + "'WHERE idEstanteria = " + idEstanteria.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNumero.Clear();

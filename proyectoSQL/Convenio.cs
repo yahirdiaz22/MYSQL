@@ -44,7 +44,7 @@ namespace proyectoSQL
             string fechainicio = txtFechaInicio.Text;
             string fechafinal = txtFechaFinal.Text;
             string idBiblioteca = txtIDBiblio.Text;
-            consulta = consulta = "UPDATE Convenio SET descripcion = '" + descripcion + "', '" + fechainicio + "', '" + fechafinal + "', '" + idBiblioteca + "' WHERE idConvenio = " + idConvenio.ToString();
+            consulta = "UPDATE Convenio SET descripcion = '" + descripcion + "',fechaInicio =  '" + fechainicio + "', fechaFinal =  '" + fechafinal + "', idBiblioteca = '" + idBiblioteca + "' WHERE idConvenio = " + idConvenio.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtDescripcion.Clear();

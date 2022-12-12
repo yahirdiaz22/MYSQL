@@ -46,7 +46,7 @@ namespace proyectoSQL
             string mobiliario = txtMobiliario.Text;
             string material = txtMaterial.Text;
             string idBiblioteca = txtidBiblio.Text;
-            consulta = consulta = "UPDATE Boveda SET nombre = '" + nombre + "', '" + mobiliario + "', '" + material + "', '" + idBiblioteca + "' WHERE idBoveda = " + idBoveda.ToString();
+            consulta = "UPDATE Boveda SET nombreLibro = '" + nombre + "',mobiliario =  '" + mobiliario + "', material = '" + material + "', idBiblioteca = '" + idBiblioteca + "' WHERE idBoveda = " + idBoveda.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();

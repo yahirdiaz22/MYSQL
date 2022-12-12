@@ -49,7 +49,7 @@ namespace proyectoSQL
             string aPaterno = txtApaterno.Text;
             string aMaterno = txtAMaterno.Text;
             string idUsuario = txtIDUsuario.Text;
-            consulta = consulta = "UPDATE RegistroVisita SET fechaLlegada = '" + fechallegada + "', '" + fechaida + "','" + nombre + "', '" + aPaterno + "','" + aMaterno + "', '" + idUsuario + "' WHERE idRegistroVisita = " + idRegistroVisita.ToString();
+            consulta = "UPDATE RegistroVisita SET fechaLlegada = '" + fechallegada + "', fechaIda =  '" + fechaida + "',nombre = '" + nombre + "', apellidoPaterno = '" + aPaterno + "', apellidoMaterno = '" + aMaterno + "', idUsuario = '" + idUsuario + "' WHERE idRegistroVisita = " + idRegistroVisita.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtApaterno.Clear();

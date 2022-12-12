@@ -46,7 +46,7 @@ namespace proyectoSQL
             string descripcion = txtDescripcion.Text;
             string pais = txtPais.Text;
             string libro = txtIDLibro.Text;
-            consulta = consulta = "UPDATE Idioma SET descripcion = '" + nombre + "', '" + descripcion + "','" + pais + "','" + libro + "' WHERE idIdioma = " + idIdioma.ToString();
+            consulta = "UPDATE Idioma SET nombreIdioma = '" + nombre + "',descripcion =  '" + descripcion + "',paisOrigen = '" + pais + "', idLibro = '" + libro + "' WHERE idIdioma = " + idIdioma.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtPais.Clear();

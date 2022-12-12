@@ -69,7 +69,7 @@ namespace proyectoSQL
             string pais = txtPais.Text;
             string telefono = txtTelefono.Text;
             int idAutor = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            consulta = "  UPDATE Autor SET nombre ='" + nombre + "','" + aPaterno + "','" + aMaterno + "'+'" + calle + "','" + colonia + "','" + numero + "'+'" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "'WHERE idAreaMuseo = " + idAutor.ToString();
+            consulta = "  UPDATE Autor SET nombre ='" + nombre + "',apellidoPaterno = '" + aPaterno + "',apellidoMaterno = '" + aMaterno + "', calle = '" + calle + "',colonia = '" + colonia + "',numeroExterior = '" + numero + "', cuidad = '" + cuidad + "',estado = '" + estado + "',pais = '" + pais + "',telefono = '" + telefono + "'WHERE idAutor = " + idAutor.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();

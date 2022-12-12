@@ -70,7 +70,7 @@ namespace proyectoSQL
             string idBiblioteca = txtIDBiblioteca.Text;
             string adqusicion = txtIDAdquisicion.Text;
 
-            consulta = consulta = "UPDATE Libro SET nombreLibro = '" + nombre + "', '" + pais + "','" + cantidad + "', '" + tema + "','" + pasta + "', '" + presatmo + "','" + autor + "', '" + material + "','" + usuario + "', '" + estanteria + "','" + idBiblioteca + "', '" + adqusicion + "' WHERE idLibro = " + idLibro.ToString();
+            consulta = "UPDATE Libro SET nombreLibro = '" + nombre + "',pais = '" + pais + "',cantidadPaginas = '" + cantidad + "', idTema ='" + tema + "',idPasta = '" + pasta + "', idPrestamo = '" + presatmo + "',idAutor = '" + autor + "', idMaterial = '" + material + "',idUsuario = '" + usuario + "',idEstanteria = '" + estanteria + "',idBiblioteca = '" + idBiblioteca + "', idAdquisicion = '" + adqusicion + "' WHERE idLibro = " + idLibro.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();

@@ -74,7 +74,7 @@ namespace proyectoSQL
             string pais = txtPais.Text;
             string telefono = txtTelefono.Text;
             string idPedido = txtIDPedido.Text;
-            consulta = consulta = "UPDATE Proveedor SET nombre = '" + nombre + "', '" + aPaterno + "','" + aMaterno + "','" + rfc + "','" + calle + "','" + colonia + "','" + numero + "','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + idPedido + "' WHERE idProveedor = " + idProveedor.ToString();
+            consulta = "UPDATE Proveedor SET nombre = '" + nombre + "', apellidoPaterno = '" + aPaterno + "',apellidoMaterno = '" + aMaterno + "',rfc = '" + rfc + "',calle = '" + calle + "',colonia = '" + colonia + "',numeroExterior = '" + numero + "',cuidad = '" + cuidad + "',estado = '" + estado + "',pais = '" + pais + "',telefono = '" + telefono + "',idPedido = '" + idPedido + "' WHERE idProveedor = " + idProveedor.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();

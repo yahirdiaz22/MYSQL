@@ -237,7 +237,7 @@
             this.Controls.Add(this.txtLectura);
             this.Controls.Add(this.label1);
             this.Name = "Seccion";
-            this.Text = "ingresa la cantidad de auto servicios de fotocopias";
+            this.Text = "Seccion";
             this.Load += new System.EventHandler(this.Seccion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActividad)).EndInit();
             this.ResumeLayout(false);

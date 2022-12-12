@@ -46,7 +46,7 @@ namespace proyectoSQL
             string proyeccion = txtProyeccion.Text;
             string seccion = txtSeccion.Text;
             string idBiblioteca = txtidBiblio.Text;
-            consulta = consulta = "UPDATE DimensionLudica SET representacion = '" + representacion + "', '" + debate + "', '" + proyeccion + "', '" + seccion + "', '" + idBiblioteca + "' WHERE idDimensionLudica = " + idDimensionLudica.ToString();
+            consulta = "UPDATE DimensionLudica SET representacion = '" + representacion + "', debates = '" + debate + "', proyeccionPeliculasDocumentos = '" + proyeccion + "', seccionJuegoMesa ='" + seccion + "', idBiblioteca ='" + idBiblioteca + "' WHERE idDimensionLudica = " + idDimensionLudica.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }

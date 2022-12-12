@@ -38,7 +38,7 @@ namespace proyectoSQL
             int idClasificacion = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             string descripcion = txtDescripcion.Text;
             string idBiblioteca = txtIdBiblio.Text;
-            consulta = consulta = "UPDATE Clasificacion SET descripcion = '" + descripcion + idBiblioteca + "' WHERE idClasificaion = " + idClasificacion.ToString();
+            consulta = "UPDATE Clasificacion SET descripcion = '" + descripcion + "', idBiblioteca = '" + idBiblioteca + "' WHERE idClasificacion = " + idClasificacion.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtDescripcion.Clear();

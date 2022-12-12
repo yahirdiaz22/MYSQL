@@ -39,7 +39,7 @@ namespace proyectoSQL
             int idMaterial = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             string tipoMaterial = txtMaterial.Text;
             string Cantidad = txtCantidad.Text;
-            consulta = consulta = "UPDATE Material SET material = '" + txtCantidad + Cantidad + "' WHERE idMaterial = " + idMaterial.ToString();
+            consulta = "UPDATE Material  SET tipoMaterial = '" + tipoMaterial + "', cantidadMaterial = '" + Cantidad + "' WHERE idMaterial = " + idMaterial.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtMaterial.Clear();

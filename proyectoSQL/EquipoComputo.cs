@@ -53,7 +53,7 @@ namespace proyectoSQL
             string fechainicio = txtFechaInicio.Text;
             string fechafinal = txtFechaFiinal.Text;
             string idBiblioteca = txtIDBil.Text;
-            consulta = consulta = "UPDATE Clasificacion SET marca = '" + marca + "', '" + numero + "','" + fechainicio + "', '" + fechafinal + "','" + idBiblioteca + "' WHERE idEquipoComputo = " + idEquipoComputo.ToString();
+            consulta = "UPDATE EquipoComputo SET marca = '" + marca + "', numeroEquipo = '" + numero + "',fechaInicio = '" + fechainicio + "',fechaFinal = '" + fechafinal + "',idBiblioteca = '" + idBiblioteca + "' WHERE idEquipoComputo = " + idEquipoComputo.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtMarca.Clear();

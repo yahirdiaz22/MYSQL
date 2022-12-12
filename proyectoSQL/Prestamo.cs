@@ -41,7 +41,7 @@ namespace proyectoSQL
             string fecha = txtPrestamo.Text;
             string fechaEntrega = txtFechaEntrega.Text;
             string credencial = txtIDCredencial.Text;
-            consulta = consulta = "UPDATE Prestamo SET fecha = '" + fecha + "', '" + fechaEntrega + "','" + credencial + "' WHERE idPrestamo = " + idPrestamo.ToString();
+            consulta = "UPDATE Prestamo SET fecha = '" + fecha + "', fecheEntrega = '" + fechaEntrega + "',idCredencial = '" + credencial + "' WHERE idPrestamo = " + idPrestamo.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDCredencial.Clear();

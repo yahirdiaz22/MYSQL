@@ -57,7 +57,7 @@ namespace proyectoSQL
             string planos = txtPlano.Text;
 
             string idBiblioteca = txtIDBil.Text;
-            consulta = consulta = "UPDATE idDocumento SET video = '" + video + "', '" + cds + "', '" + dvd + "', '" + mapas + "','" + planos + "','" + idBiblioteca + "' WHERE idDocumento = " + idDocumento.ToString();
+            consulta = "UPDATE Documento SET videos = '" + video + "', cds =  '" + cds + "', dvd = '" + dvd + "', mapas = '" + mapas + "',planos = '" + planos + "',idBiblioteca = '" + idBiblioteca + "' WHERE idDocumento = " + idDocumento.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtVideo.Clear();

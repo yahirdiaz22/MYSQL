@@ -41,7 +41,7 @@ namespace proyectoSQL
             string nombre = txtNombre.Text;
             string numeroPersonas = txtNumero.Text;
             string idBiblioteca = txtIDBiblio.Text;
-            consulta = consulta = "UPDATE Comite SET nombre = '" + nombre + "', '" + numeroPersonas + "', '" + idBiblioteca  + "' WHERE idComite = " + idComite.ToString();
+            consulta = "UPDATE Comite SET nombre = '" + nombre + "',  numeroPersonas = '" + numeroPersonas + "', idBiblioteca = '" + idBiblioteca + "' WHERE idComite = " + idComite.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDBiblio.Clear();

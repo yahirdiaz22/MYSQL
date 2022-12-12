@@ -67,7 +67,7 @@ namespace proyectoSQL
             string estado = txtEstado.Text;
             string pais = txtPais.Text;
             int idBiblioteca = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            consulta = "  UPDATE Biblioteca SET nombre ='" + nombre + "','" + calle + "','" + colonia + "','" + numeroExterior + "','" + telefono + "','" + cuidad + "','" + estado + "','" + pais +  "'WHERE idAdquisicion = " + idBiblioteca.ToString();
+            consulta = "  UPDATE Biblioteca SET nombre ='" + nombre + "',calle = '" + calle + "',colonia = '" + colonia + "',numeroExterior = '" + numeroExterior + "',telefono = '" + telefono + "',cuidad = '" + cuidad + "',estado = '" + estado + "',pais = '" + pais + "'WHERE idBiblioteca  = " + idBiblioteca.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtPais.Clear();

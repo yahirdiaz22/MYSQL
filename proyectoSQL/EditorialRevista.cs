@@ -39,8 +39,8 @@ namespace proyectoSQL
         {
             int idEditorialRevista = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             string idEditorial = txtIDColeccion.Text;
-            string idLibro = txtIDLibro.Text;
-            consulta = consulta = "UPDATE idEditorialRevista SET idEditorial = '" + idEditorial + "', '" + idLibro + "' WHERE idEditorialRevista = " + idEditorialRevista.ToString();
+            string idRevista = txtIDLibro.Text;
+            consulta = "UPDATE EditorialRevista SET idEditorial = '" + idEditorial + "',idRevista = '" + idRevista + "' WHERE idEditorialRevista = " + idEditorialRevista.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDColeccion.Clear();

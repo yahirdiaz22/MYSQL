@@ -39,7 +39,7 @@ namespace proyectoSQL
             int idEmpledoActividad = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             string actividad = txtActividad.Text;
             string empeldao = txtEmpleado.Text;
-            consulta = consulta = "UPDATE EmpleadoActividad SET idEmpleado = '" + empeldao + "', '" + actividad + "' WHERE idEmpledoActividad = " + idEmpledoActividad.ToString();
+            consulta = "UPDATE EmpleadoActividad SET idEmpleado = '" + empeldao + "', idActividad = '" + actividad + "' WHERE idEmpleadoActividad = " + idEmpledoActividad.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtActividad.Clear();

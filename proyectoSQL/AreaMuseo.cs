@@ -39,7 +39,7 @@ namespace proyectoSQL
             string descripcion = txtDescripcio.Text;
             string idBiblioteca = txtIdBiblioteca.Text;
             int idAreaMuseo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            consulta = "  UPDATE AreaMuseo SET nombre ='" + nombre + "','" + descripcion        + "','" + idBiblioteca + "'WHERE idAreaMuseo = " + idAreaMuseo.ToString();
+            consulta = "  UPDATE AreaMuseo SET nombre ='" + nombre + "',descripcion = '" + descripcion + "',idBiblioteca = '" + idBiblioteca + "'WHERE idAreaMuseo = " + idAreaMuseo.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();

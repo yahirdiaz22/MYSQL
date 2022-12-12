@@ -38,7 +38,7 @@ namespace proyectoSQL
             int idTema = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             string tema = txtTema.Text;
             string descripcion = txtDescripcion.Text;
-            consulta = consulta = "UPDATE Tema SET tema = '" + tema + descripcion + "' WHERE idTema = " + idTema.ToString();
+            consulta = "UPDATE Tema  SET tema = '" + tema + "', desrcipcion = '" + descripcion + "' WHERE idTema = " + idTema.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtDescripcion.Clear();

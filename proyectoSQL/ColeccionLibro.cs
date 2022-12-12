@@ -37,7 +37,7 @@ namespace proyectoSQL
             int idColeccionLibro = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             string idColeccion = txtIDColeccion.Text;
             string idLibro = txtIDLibro.Text;
-            consulta = consulta = "UPDATE ColeccionLibro SET idColeccion = '" + idColeccion + "', '" + idLibro + "' WHERE idBoveda = " + idColeccionLibro.ToString();
+            consulta = "UPDATE ColeccionLibro SET idColeccion = '" + idColeccion + "', idLibro = '" + idLibro + "' WHERE idColeccionLibro = " + idColeccionLibro.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDColeccion.Clear();

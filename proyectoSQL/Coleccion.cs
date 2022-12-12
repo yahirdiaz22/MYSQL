@@ -39,8 +39,7 @@ namespace proyectoSQL
             int idColeccion = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
             string descripcion = txtDescripcion.Text;
             string numero = txtNumero.Text;
-
-            consulta = consulta = "UPDATE Coleccion SET descripcion = '" + descripcion + "', '" + numero +  "' WHERE idColeccion = " + idColeccion.ToString();
+            consulta = "UPDATE Coleccion SET descripcion = '" + descripcion + "', numeroColeccion ='" + numero + "' WHERE idColeccion = " + idColeccion.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
         }

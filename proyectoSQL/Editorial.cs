@@ -59,8 +59,8 @@ namespace proyectoSQL
             string pais = txtPais.Text;
             string libro = txtLibrp.Text;
             string revista = txtRevista.Text;
-            consulta = "INSERT INTO Editorial (nombre,calle,colonia,numeroExterior,cuidad,estado,pais,telefono,idLibro,idRevista) " +
-               "values('" + nombre + "','" + calle + "','" + colonia + "','" + numeroExterior + "','" + cuidad + "','" + estado + "','" + pais + "','" + telefono + "','" + libro + "','" + revista + "')";
+            int idEditorial = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
+            consulta = "UPDATE Editorial SET nombre = '" + nombre + "',calle = '" + calle + "',colonia = '" + colonia + "',numeroExterior = '" + numeroExterior + "',cuidad = '" + cuidad + "',estado = '" + estado + "', pais = '" + pais + "', telefono = '" + telefono + "',idLibro = '" + libro + "',idRevista = '" + revista + "' WHERE idEditorial = " + idEditorial.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtPais.Clear();

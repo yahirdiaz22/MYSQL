@@ -51,7 +51,7 @@ namespace proyectoSQL
             string idUsuario = txtFecha.Text;
             string idEditorial = txtFecha.Text;
             int idArticulo = (int)dgvActividad.SelectedRows[0].Cells[0].Value;
-            consulta = "  UPDATE Articulo SET nombre ='" + nombre + "','" + descripcion + "','" + fecha + "','" + idUsuario + "','" + idEditorial + "WHERE idArticulo = " + idArticulo.ToString();
+            consulta = "  UPDATE Articulo SET nombreArticulo ='" + nombre + "',descripcion = '" + descripcion + "',año = '" + fecha + "',idUsuario = '" + idUsuario + "',idEditorial = '" + idEditorial + "' WHERE idArticulo = " + idArticulo.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();

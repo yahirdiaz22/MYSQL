@@ -50,7 +50,7 @@ namespace proyectoSQL
             string titulo = txtTitulo.Text;
             string ilustrador = txtIlustrador.Text;
             string libro = txtIDLibro.Text;
-            consulta = consulta = "UPDATE FichaTecnica SET año = '" + año + "', '" + sinopsis + "','" + idioma + "', '" + titulo + "','" + idioma + "', '" + libro + "' WHERE idFichaTecnica = " + idFichaTecnica.ToString();
+            consulta = "UPDATE FichaTecnica SET año = '" + año + "', sinopsis = '" + sinopsis + "', idiomaOriginal ='" + idioma + "', titulo = '" + titulo + "',ilustradorOriginal = '" + ilustrador + "', idLibro = '" + libro + "' WHERE idFichaTecnica = " + idFichaTecnica.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtTitulo.Clear();

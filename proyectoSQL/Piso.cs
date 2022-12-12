@@ -40,7 +40,7 @@ namespace proyectoSQL
             string descripcion = txtDesrcipcion.Text;
             string numero = txtNumero.Text;
             string idBiblioteca = txtIDBiblioteca.Text;
-            consulta = consulta = "UPDATE Piso SET descripcion = '" + descripcion + idBiblioteca + "' WHERE idPiso = " + idPiso.ToString();
+            consulta = "UPDATE Piso  SET descripcion = '" + descripcion + "', numPiso = '" + numero + "', idBiblioteca = '" + idBiblioteca + "' WHERE idPiso = " + idPiso.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtIDBiblioteca.Clear();

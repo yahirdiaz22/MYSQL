@@ -45,7 +45,7 @@ namespace proyectoSQL
             string descripcion = txtDescripcion.Text;
             string cantidad = txtCantidad.Text;
             string idUsuraio = txtidUsuario.Text;
-            consulta = consulta = "UPDATE Devolucion SET fecha = '" + fecha + "', '" + descripcion + "', '" + cantidad + "', '" + idUsuraio + "' WHERE idDevolucion = " + idDevolucion.ToString();
+            consulta = "UPDATE Devolucion SET fechaEntrega = '" + fecha + "', descripcion = '" + descripcion + "', cantidadDevolucion = '" + cantidad + "', idUsuario =  '" + idUsuraio + "' WHERE idDevolucion = " + idDevolucion.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtFecha.Clear();

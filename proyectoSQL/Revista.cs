@@ -49,7 +49,7 @@ namespace proyectoSQL
             string editorial = txtEditorial.Text;
             string numeroPagina = txtNumero.Text;
             string pais = txtPais.Text;
-            consulta = consulta = "UPDATE idRevista SET nombre = '" + nombre + "', '" + editorial + "','" + numeroPagina + "', '" + pais + "' WHERE idRevista = " + idRevista.ToString();
+            consulta = "UPDATE Revista SET nombre = '" + nombre + "', editorial  =  '" + editorial + "',numeroPagina = '" + numeroPagina + "',pais =  '" + pais + "' WHERE idRevista = " + idRevista.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNumero.Clear();

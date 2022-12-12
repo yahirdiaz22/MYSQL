@@ -44,7 +44,7 @@ namespace proyectoSQL
             string Total = txtEjemplare.Text;
             string descripcion = txtDescripcion.Text;
 
-            consulta = consulta = "UPDATE Ejemplares SET totalEjemplares = '" + Total + "', '" + descripcion + "' WHERE idEjemplares = " + idEjemplares.ToString();
+            consulta = "UPDATE Ejemplares SET totalEjemplares = '" + Total + "', descripcion = '" + descripcion + "' WHERE idEjemplares = " + idEjemplares.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtDescripcion.Clear();

@@ -45,7 +45,7 @@ namespace proyectoSQL
             string fecha = txtFecha.Text;
             string idEmpelado = txtidEmpleado.Text;
             int idActividadPrograma = (int)dgvActividadPrograma.SelectedRows[0].Cells[0].Value;
-            consulta = "  UPDATE Actividad SET nombreActividad ='" + nombre + "','" + fecha +  "','" + idEmpelado + "'WHERE idActividadPrograma = " + idActividadPrograma.ToString();
+            consulta = "  UPDATE ActividadPrograma SET nombre ='" + nombre + "',fecha = '" + fecha + "',idEmpleado = '" + idEmpelado + "'WHERE idActividadPrograma = " + idActividadPrograma.ToString();
             ConexionMYSQL.ejecutaConsulta(consulta);
             MostrarDatos();
             txtNombre.Clear();
